@@ -37,7 +37,7 @@ $(document).ready(function () {
 			});
 			$.when(batchResult).done(function () {
 				var batchResultItems = (batchResult.responseJSON.attributes.Content.Items);
-				let valuesID = 0;
+				var valuesID = 0;
                                                      var UOM="-";
                                                      var UO = (batchResult.responseJSON.values.Content.Items[valuesID].Content.UnitsAbbreviation);
                                                       if(UO){ UOM=UO; }
@@ -46,18 +46,12 @@ $(document).ready(function () {
 					var elementName = batchResult.responseJSON.elements.Content.Items[elementID].Name;
 					var elementItems = [];
 					attrItems.forEach(function (attr, attrID) {
-						let attrValue = "-";
+						var attrValue = "-";
 						if (attr !== undefined && attr.Object !== undefined) {
 							attrName = attr.Object.Name;
-							const getNestedObject = (nestedObj, pathArr) => {
-								return pathArr.reduce((obj, key) => (obj && obj[key] !== undefined) ? obj[key] : undefined, nestedObj)
-							}
 							if (batchResult.responseJSON.values.Content.Items !== undefined && (batchResult.responseJSON.values.Content.Status === undefined || batchResult.responseJSON.values.Content.Status < 400) && batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
-								var attrV = getNestedObject(batchResult.responseJSON.values, ['Content', 'Items', valuesID, 'Content', 'Value']);
-                                                                                                          // var U = getNestedObject(batchResult.responseJSON.values, ['Content', 'Items', valuesID, 'Content', 'UnitsAbbreviation']);  
-                                                                                                          
-								if (attrV !== "" && !isNaN(attrV)) {
-									//attrValue = (Math.round((attrV) * 100) / 100);
+								var attrV =batchResult.responseJSON.values.Content.Items[valuesID].Content.Value;
+                                                                                                          if (attrV !== "" && !isNaN(attrV)) {
                                                                                                                         attrValue = (attrV).toFixed(plantHead[key].digits);
 								}
 							}

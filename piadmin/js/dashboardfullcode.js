@@ -36,7 +36,7 @@ $.each(monthlyReceipt, function (key) {
 	});
 	$.when(batchResult).done(function () {
 		var batchResultItems = (batchResult.responseJSON.attributes.Content.Items);
-		let valuesID = 0;
+		var valuesID = 0;
 		$.each(batchResultItems, function (elementID) {
 			var attrItems = batchResultItems[elementID].Content.Items;
 			var elementName = batchResult.responseJSON.elements.Content.Items[elementID].Name;
@@ -45,22 +45,25 @@ $.each(monthlyReceipt, function (key) {
 				"mw": elementName
 			});
 			attrItems.forEach(function (attr, attrID) {
-				let attrValue = "-";
+				var attrValue = "-";
 				if (attr !== undefined && attr.Object !== undefined) {
-					attrName = attr.Object.Name;
-					const getNestedObject = (nestedObj, pathArr) => {
-						return pathArr.reduce((obj, key) => (obj && obj[key] !== undefined) ? obj[key] : undefined, nestedObj)
-					}
+					attrName = attr.Object.Name;					
 					if (batchResult.responseJSON.values.Content.Items !== undefined && (batchResult.responseJSON.values.Content.Status === undefined || batchResult.responseJSON.values.Content.Status < 400) && batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
-						var attrV = getNestedObject(batchResult.responseJSON.values, ['Content', 'Items', valuesID, 'Content', 'Value']);
+						var attrV =batchResult.responseJSON.values.Content.Items[valuesID].Content.Value;
 						if (attrV !== "" && !isNaN(attrV)) {
 							attrValue = (Math.round((attrV) * 100) / 100);
 						}
 					}
 				}
+                                                if(attrName =='ACT'){
 				elementItems[attrID + 1] = ({
-					[attrName]: attrValue
-				});
+					'ACT': attrValue
+                                                        });
+                                                          }else{
+                                                                  elementItems[attrID + 1] = ({
+                                                                  'BP': attrValue
+                                                        });
+                                                          }
 				valuesID++;
 			});
 			rankingElements[elementID] = elementItems;
@@ -170,7 +173,7 @@ $.each(dashboardKpis, function (key) {
 	});
 	$.when(batchResult).done(function () {
 		var batchResultItems = (batchResult.responseJSON.attributes.Content.Items);
-		let valuesID = 0;
+		var valuesID = 0;
 		$.each(batchResultItems, function (elementID) {
 			var attrItems = batchResultItems[elementID].Content.Items;
 			var elementName = batchResult.responseJSON.elements.Content.Items[elementID].Name;
@@ -181,16 +184,23 @@ $.each(dashboardKpis, function (key) {
 			attrItems.forEach(function (attr, attrID) {
 				if (attr !== undefined && attr.Object !== undefined) {
 					attrName = attr.Object.Name;
-					const getNestedObject = (nestedObj, pathArr) => {
-						return pathArr.reduce((obj, key) => (obj && obj[key] !== undefined) ? obj[key] : undefined, nestedObj)
-					}
+//					function getNestedObject(nestedObj, pathArr){
+//						return pathArr.reduce((obj, key) => (obj && obj[key] !== undefined) ? obj[key] : undefined, nestedObj)
+//					}
 					if (batchResult.responseJSON.values.Content.Items !== undefined && (batchResult.responseJSON.values.Content.Status === undefined || batchResult.responseJSON.values.Content.Status < 400) && batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
-						var attrV = getNestedObject(batchResult.responseJSON.values, ['Content', 'Items', valuesID, 'Content', 'Value']);
+						//var attrV = getNestedObject(batchResult.responseJSON.values, ['Content', 'Items', valuesID, 'Content', 'Value']);
+                                                                                var attrV =batchResult.responseJSON.values.Content.Items[valuesID].Content.Value;
 					}
 				}
-				elementItems[attrID + 1] = ({
-					[attrName]: attrV
-				});
+                                                        if(attrName=='value'){
+                                                                elementItems[attrID + 1] = ({
+                                                                          'value': attrV
+                                                                });
+                                                         }else{
+                                                                 elementItems[attrID + 1] = ({
+                                                                          'color': attrV
+                                                                });
+                                                         }
 				valuesID++;
 			});
 			rankingElements.push(elementItems);
@@ -296,7 +306,7 @@ $.each(dashboardKpis, function (key) {
 		});
 		$.when(batchResult2).done(function () {
 			var batchResultItems = (batchResult2.responseJSON.attributes.Content.Items);
-			let valuesID = 0;
+			var valuesID = 0;
 			var color = [{
 				"color": "#0D52D1"
 			}, {
@@ -306,23 +316,22 @@ $.each(dashboardKpis, function (key) {
 				var attrItems = batchResultItems[elementID].Content.Items;
 				attrItems.forEach(function (attr, attrID) {
 					var elementName = batchResult2.responseJSON.attributes.Content.Items[elementID].Content.Items[attrID].Object.Name;
-					let attrValue = "-";
+					var attrValue = "-";
 					if (attr !== undefined && attr.Object !== undefined) {
 						attrName = attr.Object.Name;
-						const getNestedObject = (nestedObj, pathArr) => {
-							return pathArr.reduce((obj, key) =>
-								(obj && obj[key] !== undefined) ? obj[key] : undefined, nestedObj);
-						};
+//						function getNestedObject(nestedObj, pathArr){                                                                                                
+//							return pathArr.obj[key];
+//						};
 						if (batchResult2.responseJSON.values.Content.Items !== undefined &&
 							(batchResult2.responseJSON.values.Content.Status === undefined || batchResult2.responseJSON.values.Content.Status < 400) &&
 							batchResult2.responseJSON.values.Content.Items[valuesID].Status === 200) {
-							var attrV = getNestedObject(batchResult2.responseJSON.values, ['Content', 'Items', valuesID, 'Content', 'Value']);
+							 var attrV =batchResult2.responseJSON.values.Content.Items[valuesID].Content.Value;   
 							if (attrV !== "" && !isNaN(attrV)) {
 								attrValue = (Math.round((attrV) * 100) / 100);
 							}
 						}
 					}
-                                                                if(attrName==='Actual'){ $("#"+dashboardKpis[key].div + mtdytd[key1].afname+"Actual").text(attrValue); }else{
+                                                                if(attrName==='Actual'){ $("#"+dashboardKpis[key].div + mtdytd[key1].afname+"Actual").text(attrValue); }else{ 
 					rankingElements.push({
 						mw: elementName,
 						color: color[attrID].color,

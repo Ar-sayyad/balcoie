@@ -36,7 +36,7 @@ $.each(kpisOverallPlant, function (key) {
 	});
 	$.when(batchResult).done(function () {
 		var batchResultItems = (batchResult.responseJSON.attributes.Content.Items);
-		var valuesID = 0;
+		let valuesID = 0;
 		$.each(batchResultItems, function (elementID) {
 			var attrItems = batchResultItems[elementID].Content.Items;
 			var elementName = batchResult.responseJSON.elements.Content.Items[elementID].Name;
@@ -45,25 +45,22 @@ $.each(kpisOverallPlant, function (key) {
 				"mw": elementName
 			});
 			attrItems.forEach(function (attr, attrID) {
-				var attrValue = "-";
+				let attrValue = "-";
 				if (attr !== undefined && attr.Object !== undefined) {
 					attrName = attr.Object.Name;
+					const getNestedObject = (nestedObj, pathArr) => {
+						return pathArr.reduce((obj, key) => (obj && obj[key] !== undefined) ? obj[key] : undefined, nestedObj);
+					};
 					if (batchResult.responseJSON.values.Content.Items !== undefined && (batchResult.responseJSON.values.Content.Status === undefined || batchResult.responseJSON.values.Content.Status < 400) && batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
-						var attrV =batchResult.responseJSON.values.Content.Items[valuesID].Content.Value;                                                                      
+						var attrV = getNestedObject(batchResult.responseJSON.values, ['Content', 'Items', valuesID, 'Content', 'Value']);
 						if (attrV !== "" && !isNaN(attrV)) {
 							attrValue = (Math.round((attrV) * 100) / 100);
 						}
 					}
 				}
-                                                        if(attrName =='ACT'){
-                                                                elementItems[attrID + 1] = ({ 'ACT': attrValue });
-                                                          }else if(attrName =='BP'){
-                                                                elementItems[attrID + 1] = ({ 'BP': attrValue });
-                                                          }else if(attrName =='Trips'){
-                                                                elementItems[attrID + 1] = ({ 'Trips': attrValue });
-                                                          }else if(attrName =='Tube_Leaks'){
-                                                                elementItems[attrID + 1] = ({ 'Tube_Leaks': attrValue });
-                                                          }				
+				elementItems[attrID + 1] = ({
+					[attrName]: attrValue
+				});
 				valuesID++;
 			});
 			rankingElements[elementID] = elementItems;
