@@ -50,7 +50,7 @@ $.each(elementPerformance, function (key1) {
 		});
 		$.when(batchResult).done(function () {
 			var batchResultItems = (batchResult.responseJSON.attributes.Content.Items);
-			let valuesID = 0;
+			var valuesID = 0;
 			$.each(batchResultItems, function (elementID) {
 				var attrItems = batchResultItems[elementID].Content.Items;
 				var elementName = batchResult.responseJSON.elements.Content.Items[elementID].Name;
@@ -61,16 +61,27 @@ $.each(elementPerformance, function (key1) {
 				attrItems.forEach(function (attr, attrID) {
 					if (attr !== undefined && attr.Object !== undefined) {
 						attrName = attr.Object.Name;
-						const getNestedObject = (nestedObj, pathArr) => {
-							return pathArr.reduce((obj, key) => (obj && obj[key] != undefined) ? obj[key] : undefined, nestedObj)
-						}
 						if (batchResult.responseJSON.values.Content.Items !== undefined && (batchResult.responseJSON.values.Content.Status === undefined || batchResult.responseJSON.values.Content.Status < 400) && batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
-							var attrV = getNestedObject(batchResult.responseJSON.values, ['Content', 'Items', valuesID, 'Content', 'Value']);
+							var attrV =batchResult.responseJSON.values.Content.Items[valuesID].Content.Value;
 						}
 					}
-					elementItems[attrID + 1] = ({
-						[attrName]: attrV
-					});
+                                                                if(attrName =='color'){
+                                                                        elementItems[attrID + 1] = ({
+                                                                        'color': attrV
+                                                                        });
+                                                                }else if(attrName =='StartValue'){
+                                                                        elementItems[attrID + 1] = ({
+                                                                        'StartValue': attrV
+                                                                        });
+                                                                }else if(attrName =='endValue'){
+                                                                        elementItems[attrID + 1] = ({
+                                                                        'endValue': attrV
+                                                                        });
+                                                                }else if(attrName =='Realtime_MW'){
+                                                                        elementItems[attrID + 1] = ({
+                                                                        'Realtime_MW': attrV
+                                                                        });
+                                                                }
 					valuesID++;
 				});
 				rankingElements[elementID] = elementItems;

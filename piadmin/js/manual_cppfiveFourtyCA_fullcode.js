@@ -118,7 +118,7 @@
    var valuesID = 0;
    var WebId = batchResult.responseJSON.database.Content.WebId;
    var uom = batchResult.responseJSON.database.Content.DefaultUnitsNameAbbreviation;
-   let attrValue = "-";
+   var attrValue = "-";
    if (batchResult.responseJSON.values.Content.Items !== undefined && (batchResult.responseJSON.values.Content.Status === undefined || batchResult.responseJSON.values.Content.Status < 400) && batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
     var attrV = (batchResult.responseJSON.values.Content.Items[0].Content.Value);
     if (attrV !== "" && !isNaN(attrV)) {

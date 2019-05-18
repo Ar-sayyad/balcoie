@@ -38,7 +38,7 @@ $.each(performanceUnits, function (key) {
 	});
 	$.when(batchResult).done(function () {
 		var batchResultItems = (batchResult.responseJSON.attributes.Content.Items);
-		let valuesID = 0;
+		var valuesID = 0;
 		var color = [{
 			"color": "#0D52D1"
 		}, {
@@ -48,17 +48,13 @@ $.each(performanceUnits, function (key) {
 			var attrItems = batchResultItems[elementID].Content.Items;
 			attrItems.forEach(function (attr, attrID) {
 				var elementName = batchResult.responseJSON.attributes.Content.Items[elementID].Content.Items[attrID].Object.Name;
-				let attrValue = "-";
+				var attrValue = "-";
 				if (attr !== undefined && attr.Object !== undefined) {
 					attrName = attr.Object.Name;
-					const getNestedObject = (nestedObj, pathArr) => {
-						return pathArr.reduce((obj, key) =>
-							(obj && obj[key] !== undefined) ? obj[key] : undefined, nestedObj);
-					};
 					if (batchResult.responseJSON.values.Content.Items !== undefined &&
 						(batchResult.responseJSON.values.Content.Status === undefined || batchResult.responseJSON.values.Content.Status < 400) &&
 						batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
-						var attrV = getNestedObject(batchResult.responseJSON.values, ['Content', 'Items', valuesID, 'Content', 'Value']);
+                                                                                var attrV =batchResult.responseJSON.values.Content.Items[valuesID].Content.Value;						
 						if (attrV !== "" && !isNaN(attrV)) {
 							attrValue = (Math.round((attrV) * 100) / 100);
 						}
@@ -79,7 +75,7 @@ $.each(performanceUnits, function (key) {
 				"categoryField": "mw",
 				//"rotate": true,
 				"startEffect": "elastic",
-				"startDuration": 1,
+				"startDuration": 0,
 				"categoryAxis": {
 					"gridPosition": "start",
 					"position": "left",

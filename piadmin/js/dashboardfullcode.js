@@ -55,14 +55,14 @@ $.each(monthlyReceipt, function (key) {
 						}
 					}
 				}
-                                                if(attrName =='ACT'){
-				elementItems[attrID + 1] = ({
-					'ACT': attrValue
-                                                        });
-                                                          }else{
-                                                                  elementItems[attrID + 1] = ({
-                                                                  'BP': attrValue
-                                                        });
+                                                        if(attrName =='ACT'){
+                                                                elementItems[attrID + 1] = ({
+                                                                'ACT': attrValue
+                                                                });
+                                                         }else{
+                                                                elementItems[attrID + 1] = ({
+                                                                'BP': attrValue
+                                                                });
                                                           }
 				valuesID++;
 			});

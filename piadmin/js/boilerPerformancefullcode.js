@@ -38,23 +38,18 @@ $.each(boilerPerformance, function(key) {
     });
     $.when(batchResult).done(function() {
         var batchResultItems = (batchResult.responseJSON.attributes.Content.Items);
-        let valuesID = 0;       
+        var valuesID = 0;       
         $.each(batchResultItems, function(elementID) {
             var attrItems = batchResultItems[elementID].Content.Items;
             attrItems.forEach(function(attr, attrID) {
                 var elementName = batchResult.responseJSON.attributes.Content.Items[elementID].Content.Items[attrID].Object.Name;
-                let attrValue = "-";
+                var attrValue = "-";
                 if (attr !== undefined && attr.Object !== undefined) {
                     attrName = attr.Object.Name;
-                    const getNestedObject = (nestedObj, pathArr) => {
-                        return pathArr.reduce((obj, key) =>
-                            (obj && obj[key] !== undefined) ? obj[key] : undefined, nestedObj);
-                    };
                     if (batchResult.responseJSON.values.Content.Items !== undefined &&
                         (batchResult.responseJSON.values.Content.Status === undefined || batchResult.responseJSON.values.Content.Status < 400) &&
                         batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
-                        var attrV = getNestedObject(batchResult.responseJSON.values,
-                            ['Content', 'Items', valuesID, 'Content', 'Value']);
+                        var attrV =batchResult.responseJSON.values.Content.Items[valuesID].Content.Value;
                         if (attrV !== "" && !isNaN(attrV)) {
                             attrValue = (Math.round((attrV) * 100) / 100);
                         }
@@ -67,7 +62,7 @@ $.each(boilerPerformance, function(key) {
                 valuesID++;
             });
         });
-        var chart = AmCharts.makeChart(boilerPerformance[key].div, {
+                AmCharts.makeChart(boilerPerformance[key].div, {
                 "type": boilerPerformance[key].type,
                 "theme": boilerPerformance[key].theme,
                 "titles": [],
@@ -138,7 +133,7 @@ $.each(allBoilerEfficiency, function(key) {
     });
     $.when(batchResult).done(function() {
         var batchResultItems = (batchResult.responseJSON.attributes.Content.Items);
-        let valuesID = 0;
+        var valuesID = 0;
         $.each(batchResultItems, function(elementID) {
             var attrItems = batchResultItems[elementID].Content.Items;
             var elementName = batchResult.responseJSON.elements.Content.Items[elementID].Name;
@@ -147,22 +142,29 @@ $.each(allBoilerEfficiency, function(key) {
                 "mw": elementName
             });
             attrItems.forEach(function(attr, attrID) {
-                let attrValue = "-";
+                var attrValue = "-";
                 if (attr !== undefined && attr.Object !== undefined) {
                     attrName = attr.Object.Name;
-                    const getNestedObject = (nestedObj, pathArr) => {
-                        return pathArr.reduce((obj, key) => (obj && obj[key] != undefined) ? obj[key] : undefined, nestedObj)
-                    }
                     if (batchResult.responseJSON.values.Content.Items !== undefined && (batchResult.responseJSON.values.Content.Status === undefined || batchResult.responseJSON.values.Content.Status < 400) && batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
-                        var attrV = getNestedObject(batchResult.responseJSON.values, ['Content', 'Items', valuesID, 'Content', 'Value']);
+                        var attrV =batchResult.responseJSON.values.Content.Items[valuesID].Content.Value;
                         if (attrV !== "" && !isNaN(attrV)) {
                             attrValue = (Math.round((attrV) * 100) / 100);
                         }
                     }
                 }
-                elementItems[attrID + 1] = ({
-                    [attrName]: attrValue
-                });
+                if(attrName =='HL'){
+                        elementItems[attrID + 1] = ({
+                        'HL': attrValue
+                        });
+                 }else if(attrName =='IO'){
+                        elementItems[attrID + 1] = ({
+                        'IO': attrValue
+                        });
+                  }else if(attrName =='value'){
+                        elementItems[attrID + 1] = ({
+                        'value': attrValue
+                        });
+                  }
                 valuesID++;
             });
             rankingElements[elementID] = elementItems;
@@ -176,7 +178,7 @@ $.each(allBoilerEfficiency, function(key) {
                             hl: rankingElements[key1][1].HL
                         });            
                 });
-        var chart = AmCharts.makeChart(allBoilerEfficiency[key].div, {
+           AmCharts.makeChart(allBoilerEfficiency[key].div, {
             "type": allBoilerEfficiency[key].type,
             "theme": allBoilerEfficiency[key].theme,
             "categoryField": "mw",
@@ -241,7 +243,7 @@ $.each(allBoilerEfficiency, function(key) {
                             val: rankingElements[key1][1].value
                         });            
                 });                
-                 var chart = AmCharts.makeChart(allBoilerEfficiency[key].div, {
+                 AmCharts.makeChart(allBoilerEfficiency[key].div, {
                 "type": allBoilerEfficiency[key].type,
                 "theme": allBoilerEfficiency[key].theme,
                 "titles": [],
