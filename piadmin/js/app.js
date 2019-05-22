@@ -7,7 +7,7 @@ var baseServiceUrl = "https://ecgdevserver:1706/piwebapi/";//https://192.168.1.1
 var user = "piwebapiuser";//"Ashif";
 var pass = "webapiuser@2019";//"Ecgit@123";
 var afServerName = "ECGDEVSERVER";//"ASHIF-DMGLBQI";//
-var afDatabaseName = "BALCOPOWER\\VEDANTA\\BALCO\\WebPortal"; //
+var afDatabaseName = "Vedanta\\VEDANTA\\BALCO\\WebPortal"; //
 var enableBasicAuth=!0;
 var processJsonContent = function (url, type, data) {
 	return $.ajax({

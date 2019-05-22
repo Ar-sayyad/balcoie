@@ -11,12 +11,13 @@
                     <a class="has-arrow" href="#" aria-expanded="false">
                         <i class="fa fa-arrows"></i>
                         <span class="hide-menu">KPIS
-                            <span class="label label-rouded label-primary pull-right">4</span>                                        
+                            <span class="label label-rouded label-primary pull-right">5</span>                                        
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
+                        <li><a href="<?php echo base_url();?>kpis/dashboard2"><i class="fa fa-dashboard"></i> Dashboard 2 </a></li>
                         <li><a href="<?php echo base_url();?>kpis/overallPlant"><i class="fa fa-bar-chart"></i> Overall Plant </a></li>
-                         <li><a href="<?php echo base_url();?>kpis/plantHead"><i class="fa fa-table"></i> Plant Head</a></li> 
+                        <li><a href="<?php echo base_url();?>kpis/plantHead"><i class="fa fa-table"></i> Plant Head</a></li> 
                         <li><a href="<?php echo base_url();?>kpis/cop"><i class="fa fa-bar-chart"></i> COP </a></li>
                         <li><a href="<?php echo base_url();?>kpis/copBreakup"><i class="fa fa-bar-chart"></i> COP Breakup </a></li>
                         <!--<li><a href="#"><i class="fa fa-file-text"></i> Misc. </a></li>-->

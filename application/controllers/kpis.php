@@ -56,6 +56,13 @@ class kpis extends CI_Controller {
              $data['path'] = "COPBreakup";
             $this->load->view('balco/kpisData',$data);
         }
+         public function dashboard2(){
+            $data['title'] = "KPIs <i class='fa fa-angle-double-right'></i> Dashboard - 2";
+            $data['titlebar'] = "KPIs >> Dashboard - 2";
+            $data['icons'] = "bubble_chart";
+            $data['path'] = "DASHBOARD-2";
+            $this->load->view('balco/dashboard2',$data);
+        }
         
       
 }
