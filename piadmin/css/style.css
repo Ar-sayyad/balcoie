@@ -2050,9 +2050,11 @@ textarea {
 .footer {
   background: #ffffff none repeat scroll 0 0;
   border-top: 1px solid rgba(120, 130, 140, 0.13);
-  color: #67757c;
+  color: #404245;
   left: 0;
-  padding: 17px 15px;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 5px 15px;
   position: absolute;
   right: 0;
 }
@@ -4330,7 +4332,7 @@ table.dataTable thead .sorting::after {
  */
 footer {
   display: block;
-  margin: 1rem 0;
+  /* margin: 1rem 0; */
   padding: 1rem 0 0;
 }
 footer p {
