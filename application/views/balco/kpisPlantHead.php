@@ -4,6 +4,29 @@
 {
     text-align: left;padding-left:20px;
 }
+.page-titles {
+    background: #ffffff;
+    margin: 0px 0 0px;
+    display: none;
+}
+.container-fluid {
+    background-color: #919497;
+}
+.mydata {
+    padding: 5px;
+        margin-top: 25px;
+    border-radius: 3px;
+    box-shadow: 5px 5px 12px rgb(158, 157, 157);
+}
+.printdiv{
+          padding-bottom: 25px;  
+    }
+    #printBtn{
+       float: right;
+       box-shadow: 5px 5px 12px #000000; 
+       border: 1px solid #6257a6;
+    }
+    
 </style>
 <body class="fix-header fix-sidebar">
    <?php include('includes/preloader.php');?>
@@ -26,12 +49,12 @@
          <!-- Container fluid  -->
          <div class="container-fluid">
             <!-- Start Page Content -->                
-            <div class="row">
+            <div class="row printPage" id="printPage">
                <div class="col-12">
                   <div class="card mydata">
                      <div class="card-body">
                         <div class="table-responsive">
-                           <table id="example23" class="display nowrap table table-striped  table-bordered" cellspacing="0" width="100%">
+                           <table id="plantHead" class="display nowrap table table-striped  table-bordered" cellspacing="0" width="100%">
                               <thead>
                                  <tr style="background-color: #2177cd;">
                                     <th rowspan="2" style="width: 5% important;">S.No</th>
@@ -57,6 +80,9 @@
                   </div>
                </div>
             </div>
+             <div class="printdiv">
+                        <button type="button" id="printBtn" class="btn btn-primary  sbmt-btn"><i class="ti-printer"></i> Print</button>
+                </div>
             <!-- End PAge Content -->
          </div>
          <!-- End Container fluid  -->
@@ -71,6 +97,7 @@
    <?php include('includes/footer-min.php');?>
    <!-- Styles -->
    <!-- Chart code -->   
+   <script src="<?php echo base_url();?>piadmin/js/jquery.PrintArea.js" type="text/javascript"></script>
    <script src="<?php echo base_url();?>piadmin/js/PlantHead.js" type="text/javascript"></script>
     <!-- Chart code -->
 </body>

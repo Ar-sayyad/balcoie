@@ -230,7 +230,7 @@
     </div>
 </div> 
                 <div class="printdiv">
-                        <button type="button" onClick="PrintElem('printPage')" id="printBtn" class="btn btn-primary  sbmt-btn"><i class="ti-printer"></i> Print</button>
+                        <button type="button"  id="printBtn" class="btn btn-primary  sbmt-btn"><i class="ti-printer"></i> Print</button>
                 </div>
 
                 <!-- End PAge Content -->
