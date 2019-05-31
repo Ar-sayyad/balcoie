@@ -87,13 +87,15 @@
      'value': '05:00:00'
     });
    });
-
-   //  var sr=1;    
+$(document).ready(function(){ 
+        var pathUrl='';
    $.each(cpp540DGR, function(key) {
+        pathUrl += '&path=\\\\BLDB\\BALCOPOWER\\VEDANTA\\BALCO\\CPP%20-%20540MW\\Unit%201|' + cpp540DGR[key].parameter;
+});
     var batch = {
      "database": {
       "Method": "GET",
-      "Resource": baseServiceUrl + "attributes?path=" + cpp540DGR[key].tag_path + "|" + cpp540DGR[key].parameter
+      "Resource": baseServiceUrl + "attributes/multiple?selectedFields=Items.Object.Name;Items.Object.WebId"  +pathUrl
      },
      "values": {
       "Method": "GET",
@@ -104,7 +106,7 @@
        "database"
       ],
       "Parameters": [
-       "$.database.Content.WebId"
+        "$.database.Content.Items[*].Object.WebId"
       ]
      }
     };
@@ -115,19 +117,43 @@
     });
 
     $.when(batchResult).done(function() {
-     var valuesID = 0;
-     var WebId = batchResult.responseJSON.database.Content.WebId;
-     var uom = batchResult.responseJSON.database.Content.DefaultUnitsNameAbbreviation;
-     let attrValue = "-";
-     if (batchResult.responseJSON.values.Content.Items !== undefined && (batchResult.responseJSON.values.Content.Status === undefined || batchResult.responseJSON.values.Content.Status < 400) && batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
-      var attrV = (batchResult.responseJSON.values.Content.Items[0].Content.Value);
-      if (attrV !== "" && !isNaN(attrV)) {
-       attrValue = (Math.round((attrV) * 100) / 100);
-      }
-     }
-     $('#' + cpp540DGR[key].unitname + ' tbody').append("<tr><td>" + cpp540DGR[key].sr + "</td><td style='text-align:left;padding-left:20px;'>" + cpp540DGR[key].title + "</td><td>" + uom + "</td><td><input type='text' id='value" + cpp540DGR[key].sr + "' data-id='" + cpp540DGR[key].sr + "' data-WebId='" + WebId + "' value='" + attrValue + "' class='form-control input-manual WebId'></td><td><div class='status" + cpp540DGR[key].sr + "'></div></td></tr>")
-
-     sort_table("tbody" + cpp540DGR[key].unitname);
+      var batchResultItems = (batchResult.responseJSON.database.Content.Items);
+        var valuesID = 0;
+        $.each(batchResultItems, function (elementID) {
+            var attrItems = batchResultItems[elementID];
+            var elementName = batchResultItems[elementID].Object.Name;
+            var emName="";            
+            var sr = "";
+            var unit="";
+            $.each(cpp540DGR, function(i){  
+                    if(elementName===cpp540DGR[i].parameter){
+                          emName  = cpp540DGR[i].title;
+                          sr = cpp540DGR[i].sr;
+                          unit = cpp540DGR[i].unitname;
+                    }
+            });
+            var WebId = batchResultItems[elementID].Object.WebId;
+            var elementItems = [];
+            elementItems.push(emName);   
+             elementItems.push(unit);   
+            $.each(attrItems,function (attrID) {
+                var attrValue = "-";
+                if (batchResult.responseJSON.values.Content.Items[valuesID].Status === 200) {
+                        var attrV = (batchResult.responseJSON.values.Content.Items[valuesID].Content.Value);
+                         var uom = (batchResult.responseJSON.values.Content.Items[valuesID].Content.UnitsAbbreviation);
+                    if (attrV !== "" && !isNaN(attrV)) {
+                        attrValue = (Math.round((attrV) * 100) / 100);
+                    }
+                }
+                elementItems.push(uom);
+                elementItems.push(attrValue);
+                valuesID++;
+                console.log(elementItems);
+                $('#' + unit + ' tbody').append("<tr><td>" + sr + "</td><td>" + emName + "</td><td>" + uom + "</td><td><input type='text' id='value" + sr + "' data-id='" + sr + "' data-WebId='" + WebId + "' value='" + attrValue + "' class='form-control input-manual WebId'></td><td><div class='status" + sr + "'></div></td></tr>")
+            });  
+            sort_table("tbody" + unit);
+        });
+     
     });
 
    });
