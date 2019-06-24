@@ -15,7 +15,7 @@
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="<?php echo base_url();?>kpis/dashboard2"><i class="fa fa-dashboard"></i> Dashboard 2 </a></li>
+                        <li><a href="<?php echo base_url();?>kpis/dashboard2"><i class="fa fa-dashboard"></i> Plant Summary </a></li>
                         <li><a href="<?php echo base_url();?>kpis/overallPlant"><i class="fa fa-bar-chart"></i> Overall Plant </a></li>
                         <li><a href="<?php echo base_url();?>kpis/plantHead"><i class="fa fa-table"></i> Plant Head</a></li> 
                         <li><a href="<?php echo base_url();?>kpis/cop"><i class="fa fa-bar-chart"></i> COP </a></li>

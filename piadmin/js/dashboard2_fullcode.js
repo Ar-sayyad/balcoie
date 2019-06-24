@@ -284,7 +284,8 @@ function getDashboardData() {
 								attrValue = parseFloat((attrV).toFixed(decimal));
 								//attrValue = parseFloat((Math.round((attrV) * 100) / 100));
 							} else {
-								attrValue = batchResult1.responseJSON.values.Content.Items[valuesID].Content.Value.Name;
+								var attrVal = batchResult1.responseJSON.values.Content.Items[valuesID].Content.Value.Name;
+                                                                                                           attrValue = attrVal.fontcolor("red");
 							}
 						}
 

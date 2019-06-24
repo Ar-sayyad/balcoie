@@ -100,8 +100,8 @@
                             <th style="width: 35% !important;text-align: left;padding-left:20px;">Parameters</th>
                             <th style="width: 20% !important;">UOM</th>
                             <th style="width: 15% !important;">CPP540</th>
-                            <th style="width: 15% !important;">IPP600</th>
-                            <th style="width: 15% !important;">CPP600</th>
+                            <th style="width: 15% !important;">IPP300</th>
+                            <th style="width: 15% !important;">CPP900</th>
                         </tr>
                     </thead>
                     <tbody id="sortTable"></tbody>
@@ -113,7 +113,7 @@
                 <table id="cpp540Data" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr class="toptr">
-                            <th colspan="6" class="topth">CPP 540MW KPIs</th>
+                            <th colspan="6" class="topth">CPP540 KPIs</th>
                         </tr>
                         <tr>
                             <th style="width: 30% !important;text-align: left;padding-left:20px;">Parameters</th>
@@ -133,7 +133,7 @@
                 <table id="PowerPlant1200Data" class="display nowrap table table-striped  table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr class="toptr">
-                            <th colspan="6" class="topth">Power Plant 1200MW KPIs</th>
+                            <th colspan="6" class="topth">PP1200 KPIs</th>
                         </tr>
                         <tr>
                             <th style="width: 30% !important;text-align: left;padding-left:20px;">Parameters</th>
@@ -155,7 +155,7 @@
                 <table id="cpp2CEMSData" class="display nowrap table table-striped  table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr class="toptr">
-                            <th colspan="5" class="topth">CPP2 CEMS KPIs</th>
+                            <th colspan="5" class="topth">CPP540 CEMS KPIs</th>
                         </tr>
                         <tr>
                             <th style="width: 35% !important;text-align: left;padding-left:20px;">Parameters</th>
@@ -199,8 +199,8 @@
                             <th style="width: 35% !important;text-align: left;padding-left:20px;">Parameters</th>
                             <th style="width: 20% !important;">UOM</th>
                             <th style="width: 15% !important;">CPP540</th>
-                            <th style="width: 15% !important;">IPP600</th>
-                            <th style="width: 15% !important;">CPP600</th>
+                            <th style="width: 15% !important;">IPP300</th>
+                            <th style="width: 15% !important;">CPP900</th>
                         </tr>
                     </thead>
                     <tbody id="sortTable"></tbody>
@@ -218,8 +218,8 @@
                             <th style="width: 35% !important;text-align: left;padding-left:20px;">Parameters</th>
                             <th style="width: 20% !important;">UOM</th>
                             <th style="width: 15% !important;">CPP540</th>
-                            <th style="width: 15% !important;">IPP600</th>
-                            <th style="width: 15% !important;">CPP600</th>
+                            <th style="width: 15% !important;">IPP300</th>
+                            <th style="width: 15% !important;">CPP900</th>
                         </tr>
                     </thead>
                     <tbody id="sortTable"></tbody>
@@ -228,7 +228,7 @@
         </div>
 
     </div>
-</div> 
+</div>
                 <div class="printdiv">
                         <button type="button"  id="printBtn" class="btn btn-primary  sbmt-btn"><i class="ti-printer"></i> Print</button>
                 </div>
@@ -248,7 +248,7 @@
      <!-- Styles -->
 <!-- Chart code -->
 <script src="<?php echo base_url();?>piadmin/js/jquery.PrintArea.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>piadmin/js/dashboard2_fullcode.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>piadmin/js/dashboard2.js" type="text/javascript"></script>
 <!-- Chart code -->
 </body>
 </html>
