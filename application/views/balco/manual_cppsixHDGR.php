@@ -66,7 +66,39 @@ thead tr{
                             <div class="card-body"> 
                                     <button style="float:right;margin-bottom: 5px;" class="btn btn-primary" id="sendToPi" disabled=""><i class="fa fa-database"></i> Send Data to PI <i class="fa fa-send"></i></button>
                                     <button style="float:right;margin-bottom: 5px;margin-right: 20px;" class="btn btn-info" id="refresh"><i class="fa fa-refresh"></i> Refresh</button>
-                                    <table id="cpp600unit3" class="display nowrap table table-striped  table-bordered" cellspacing="0" width="100%">
+                                    <table id="ipp600unit1" class="display nowrap table table-striped  table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                           <tr>
+                                            <th style="width: 10% !important;">Sr.No.</th>
+                                            <th style="width: 45% !important; text-align: left;padding-left:20px;">CPP600 Unit1 Parameters</th>
+                                            <!--<th style="width: 20% !important;">Name</th>-->
+                                            <th style="width: 10% !important;">UOM</th>
+                                            <th style="width: 15% !important;">Value</th>
+                                            <th style="width: 20% !important;">Status</th>
+                                           </tr>
+                                        </thead>
+                                        <tbody id="tbodyipp600unit1">
+                                        </tbody>
+                                    </table>
+                            </div>
+                                 <div class="card-body"> 
+                                   <table id="ipp600unit2" class="display nowrap table table-striped  table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                           <tr>
+                                            <th style="width: 10% !important;">Sr.No.</th>
+                                            <th style="width: 45% !important; text-align: left;padding-left:20px;">CPP600 Unit2 Parameters</th>
+                                            <!--<th style="width: 20% !important;">Name</th>-->
+                                            <th style="width: 10% !important;">UOM</th>
+                                            <th style="width: 15% !important;">Value</th>
+                                            <th style="width: 20% !important;">Status</th>
+                                           </tr>
+                                        </thead>
+                                        <tbody id="tbodyipp600unit2">
+                                        </tbody>
+                                    </table>
+                            </div>
+                                 <div class="card-body"> 
+                                   <table id="cpp600unit3" class="display nowrap table table-striped  table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                            <tr>
                                             <th style="width: 10% !important;">Sr.No.</th>
