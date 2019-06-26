@@ -70,7 +70,7 @@ thead tr{
                                         <thead>
                                            <tr>
                                             <th style="width: 10% !important;cursor: pointer;" onclick="sort_table('tbodyipp600');">Sr.No.</th>
-                                            <th style="width: 45% !important; text-align: left;padding-left:20px;">IPP600 Parameters</th>
+                                            <th style="width: 45% !important; text-align: left;padding-left:20px;">IPP300 Parameters</th>
                                             <!--<th style="width: 20% !important;">Name</th>-->
                                             <th style="width: 10% !important;">UOM</th>
                                             <th style="width: 15% !important;">Value</th>
@@ -86,7 +86,7 @@ thead tr{
                                         <thead>
                                            <tr>
                                            <th style="width: 10% !important;cursor: pointer;" onclick="sort_table('tbodycpp600');">Sr.No.</th>
-                                            <th style="width: 45% !important; text-align: left;padding-left:20px;">CPP600  Parameters</th>
+                                            <th style="width: 45% !important; text-align: left;padding-left:20px;">CPP900  Parameters</th>
                                             <!--<th style="width: 20% !important;">Name</th>-->
                                             <th style="width: 10% !important;">UOM</th>
                                             <th style="width: 15% !important;">Value</th>

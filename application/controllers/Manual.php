@@ -54,16 +54,16 @@ class Manual extends CI_Controller {
           }     
        
          public function ippsixHDGR(){
-                $data['title'] = "Manual Entry <i class='fa fa-angle-double-right'></i> IPP 600 DGR Manual Entry";
-                $data['titlebar'] = "Manual Entry >> IPP 600 DGR Manual Entry";
+                $data['title'] = "Manual Entry <i class='fa fa-angle-double-right'></i> IPP 300 DGR Manual Entry";
+                $data['titlebar'] = "Manual Entry >> IPP 300 DGR Manual Entry";
                 $data['icons'] = "bubble_chart";
                 $data['path'] = "";
                 $this->load->view('balco/manual_ippsixHDGR',$data); 
           }       
         
           public function cppsixHDGR(){
-                $data['title'] = "Manual Entry <i class='fa fa-angle-double-right'></i> CPP 600 DGR Manual Entry";
-                $data['titlebar'] = "Manual Entry >> CPP 600 DGR Manual Entry";
+                $data['title'] = "Manual Entry <i class='fa fa-angle-double-right'></i> CPP 900 DGR Manual Entry";
+                $data['titlebar'] = "Manual Entry >> CPP 900 DGR Manual Entry";
                 $data['icons'] = "bubble_chart";
                 $data['path'] = "";
                 $this->load->view('balco/manual_cppsixHDGR',$data); 

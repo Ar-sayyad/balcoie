@@ -261,8 +261,8 @@
                             </a>
                             <ul aria-expanded="false" class="collapse">
                                         <li><a href="<?php echo base_url();?>manual/pptwelveHCA"><i class="ti-agenda"></i> Coal Analysis</a></li>
-                                        <li><a href="<?php echo base_url();?>manual/ippsixHDGR"><i class="ti-agenda"></i> IPP600 DGR</a></li>
-                                        <li><a href="<?php echo base_url();?>manual/cppsixHDGR"><i class="ti-agenda"></i> CPP600 DGR</a></li>
+                                        <li><a href="<?php echo base_url();?>manual/ippsixHDGR"><i class="ti-agenda"></i> IPP300 DGR</a></li>
+                                        <li><a href="<?php echo base_url();?>manual/cppsixHDGR"><i class="ti-agenda"></i> CPP900 DGR</a></li>
                             </ul>
                 </li>
             </ul>
