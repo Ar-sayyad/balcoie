@@ -248,7 +248,7 @@
      <!-- Styles -->
 <!-- Chart code -->
 <script src="<?php echo base_url();?>piadmin/js/jquery.PrintArea.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>piadmin/js/dashboard2.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>piadmin/js/aquila.js" type="text/javascript"></script>
 <!-- Chart code -->
 </body>
 </html>
